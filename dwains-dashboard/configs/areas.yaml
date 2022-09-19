@@ -1,0 +1,25 @@
+wohnzimmer:
+  icon: mdi:sofa
+  floor: ''
+  disabled: false
+  sort_order: 1
+kuche:
+  icon: mdi:chef-hat
+  floor: ''
+  disabled: false
+  sort_order: 4
+schlafzimmer:
+  icon: mdi:bed-empty
+  floor: ''
+  disabled: false
+  sort_order: 3
+office:
+  icon: mdi:office-building
+  floor: ''
+  disabled: false
+  sort_order: 2
+hallway:
+  icon: mdi:door-closed
+  floor: ''
+  disabled: false
+  sort_order: 5

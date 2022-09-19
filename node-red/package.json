@@ -1,0 +1,10 @@
+{
+    "name": "node-red-project",
+    "description": "A Node-RED Project",
+    "version": "0.0.1",
+    "private": true,
+    "dependencies": {
+        "node-red-contrib-controltimer": "~0.1.0",
+        "node-red-contrib-sun-position": "~2.1.1"
+    }
+}

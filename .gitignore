@@ -1,0 +1,27 @@
+# .gitignore for Home Assistant.
+
+# Whitelisted.
+!*.yaml
+!.gitignore
+!*.md
+
+# Ignored folders.
+.storage
+.cloud
+.google.token
+
+# Ignored files which might contain sensible data.
+ip_bans.yaml
+secrets.yaml
+known_devices.yaml
+home-assistant.log*
+.shopping_list.json
+zigbee2mqtt/log*
+SERVICE_ACCOUNT.json
+google_calendars.yaml
+home-assistant_v2.db*
+
+# Ignore files created by IDE's
+.vscode
+.theia
+.Trash*

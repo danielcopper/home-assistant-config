@@ -1,0 +1,174 @@
+title: "Home"
+path: "home"
+cards:
+  - type: "custom:button-card"
+    template: "card_esh_welcome"
+    triggers_update: "input_boolean.minimalist_dropdown"
+    variables:
+      ulm_card_esh_welcome_collapse: input_boolean.minimalist_dropdown
+      ulm_weather: "weather.cd_home"
+      entity_1:
+        nav: "house"
+        icon: "mdi:home"
+        name: "House"
+        color: "blue"
+      entity_2:
+        nav: "lights"
+        icon: "mdi:lightbulb"
+        name: "Lights"
+        color: "yellow"
+      entity_3:
+        nav: "office"
+        icon: "mdi:robot-vacuum"
+        name: Vacuum
+        color: "green"
+      entity_4:
+        nav: "statistics"
+        icon: "mdi:chart-bar"
+        name: Statistics
+        color: "purple"
+      entity_5:
+        nav: "network"
+        icon: "mdi:lan"
+        name: Network
+        color: "red"
+
+  - type: horizontal-stack
+    cards:
+      - type: "custom:button-card"
+        template: card_person
+        variables:
+          ulm_card_person_entity: person.daniel_kuppermann
+          ulm_card_person_use_entity_picture: true
+          ulm_card_person_zone1: zone.daniel_work
+      - type: "custom:button-card"
+        template: card_person
+        variables:
+          ulm_card_person_entity: person.chantal_rosettani_2
+          ulm_card_person_use_entity_picture: true
+          ulm_card_person_zone2: zone.chani_work
+
+  - type: "custom:button-card"
+    template: card_title
+    name: Rooms
+
+  - type: vertical-stack
+    cards:
+      - type: horizontal-stack
+        cards:
+          - type: "custom:button-card"
+            template:
+              - card_room
+              - blue_no_state
+            name: Office
+            entity: light.office_lights
+            icon: mdi:office-building
+            tap_action:
+              action: navigate
+              navigation_path: "office"
+            variables:
+              label_use_temperature: false
+              label_use_brightness: true
+              entity_1:
+                entity_id: light.office_ceiling
+                templates:
+                  - yellow_on
+                tap_action:
+                  action: toggle
+              entity_2:
+                entity_id: light.office_spots
+                templates:
+                  - yellow_on
+                tap_action:
+                  action: toggle
+              entity_3:
+                entity_id: switch.office_poweroutlet
+                templates:
+                  - green_on
+                  - red_off
+                tap_action:
+                  action: toggle
+          - type: "custom:button-card"
+            template:
+              - card_room
+              - blue_no_state
+            name: Living Room
+            entity: light.livingroom_lights
+            icon: mdi:sofa
+            tap_action:
+              action: navigate
+              navigation_path: "living_room"
+            variables:
+              label_use_temperature: false
+              label_use_brightness: true
+              entity_1:
+                entity_id: light.livingroom_ceiling_lights
+                templates:
+                  - yellow_on
+                tap_action:
+                  action: toggle
+              entity_2:
+                entity_id: light.livingroom_floorlamp
+                templates:
+                  - yellow_on
+                tap_action:
+                  action: toggle
+              entity_3:
+                entity_id: switch.livingroom_poweroutlet
+                templates:
+                  - green_on
+                  - red_off
+                tap_action:
+                  action: toggle
+
+      - type: horizontal-stack
+        cards:
+          - type: "custom:button-card"
+            template:
+              - card_room
+              - blue_no_state
+            name: Bedroom
+            entity: light.bedroom_ceiling
+            icon: mdi:bed-king-outline
+            tap_action:
+              action: navigate
+              navigation_path: "bedroom"
+            variables:
+              label_use_temperature: false
+              label_use_brightness: true
+              entity_1:
+                entity_id: light.bedroom_ceiling
+                templates:
+                  - yellow_on
+                tap_action:
+                  action: toggle
+          - type: "custom:button-card"
+            template:
+              - card_room
+              - blue_no_state
+            name: Kitchen
+            entity: light.kitchen_lights
+            icon: mdi:chef-hat
+            tap_action:
+              action: navigate
+              navigation_path: "kitchen"
+            variables:
+              label_use_temperature: false
+              label_use_brightness: true
+              entity_1:
+                entity_id: light.kitchen_ceiling
+                templates:
+                  - yellow_on
+                tap_action:
+                  action: toggle
+              entity_2:
+                entity_id: light.kitchen_cupboard
+                templates:
+                  - yellow_on
+                tap_action:
+                  action: toggle
+
+  - type: "custom:button-card"
+    template: "card_vacuum"
+    entity: "vacuum.ozmo_950"
+

@@ -1,0 +1,235 @@
+title: "Office"
+path: "office"
+cards:
+  - type: "custom:button-card"
+    template: chip_back
+    variables:
+      ulm_chip_back_path: home
+
+  - type: "custom:button-card"
+    template: card_title
+    name: Office
+
+  - type: vertical-stack
+    cards:
+      - type: "custom:button-card"
+        template: card_light
+        entity: light.office_ceiling
+        variables:
+          ulm_card_light_name: Ceiling
+          ulm_card_light_enable_slider: true
+          ulm_card_light_enable_color: true
+          ulm_card_light_force_background_color: true
+          ulm_card_light_enable_collapse: true
+          ulm_card_light_enable_horizontal: true
+      - type: "custom:button-card"
+        template: card_light
+        entity: light.office_spots
+        variables:
+          ulm_card_light_name: Spots
+          ulm_card_light_enable_slider: true
+          ulm_card_light_enable_color: true
+          ulm_card_light_force_background_color: true
+          ulm_card_light_enable_collapse: true
+          ulm_card_light_enable_horizontal: true
+
+  - type: vertical-stack
+    cards:
+      - type: custom:vacuum-card
+        entity: vacuum.ozmo_950
+        stats:
+          default:
+            - entity_id: sensor.ozmo_950_life_span_brush
+              unit: '%'
+              subtitle: Main Brush
+            - entity_id: sensor.ozmo_950_life_span_side_brush
+              unit: '%'
+              subtitle: Side Brush
+            - entity_id: sensor.ozmo_950_life_span_filter
+              unit: '%'
+              subtitle: Filter
+          cleaning:
+            - entity_id: sensor.ozmo_950_stats_area
+              unit: m²
+              subtitle: Cleaned Area
+            - entity_id: sensor.ozmo_950_stats_time
+              unit: Minutes
+              subtitle: Cleaning Time
+        show_status: true
+        show_toolbar: true
+        compact_view: true
+        show_name: true
+      - type: custom:button-card
+        color: auto-no-temperature
+        name: Choose Rooms to Clean
+        styles:
+          card:
+            - font-size: 18px
+            - height: 30px
+          name:
+            - color: var(--primary-color)
+      - type: horizontal-stack
+        cards:
+          - type: custom:button-card
+            template: vacuum_room
+            entity: sensor.deebot_ozmo_950_queue_study
+            icon: mdi:office-building
+            name: Office
+            tap_action:
+              service_data:
+                room: study
+          - type: custom:button-card
+            template: vacuum_room
+            entity: sensor.deebot_ozmo_950_queue_living_room
+            icon: mdi:sofa
+            name: Living Room
+            tap_action:
+              service_data:
+                room: living_room
+          - type: custom:button-card
+            template: vacuum_room
+            entity: sensor.deebot_ozmo_950_queue_bathroom
+            icon: mdi:shower
+            name: Bathroom
+            tap_action:
+              service_data:
+                room: bathroom
+      - type: horizontal-stack
+        cards:
+          - type: custom:button-card
+            template: vacuum_room
+            entity: sensor.deebot_ozmo_950_queue_bedroom
+            icon: mdi:bed
+            name: Bedroom
+            tap_action:
+              service_data:
+                room: bedroom
+          - type: custom:button-card
+            template: vacuum_room
+            entity: sensor.deebot_ozmo_950_queue_corridor
+            icon: mdi:door-closed
+            name: Hallway
+            tap_action:
+              service_data:
+                room: corridor
+          - type: custom:button-card
+            template: vacuum_room
+            entity: sensor.deebot_ozmo_950_queue_lounge
+            icon: mdi:toilet
+            name: Toilet
+            tap_action:
+              service_data:
+                room: lounge
+          - type: custom:button-card
+            template: vacuum_room
+            entity: sensor.deebot_ozmo_950_queue_kitchen
+            icon: mdi:chef-hat
+            name: Kitchen
+            tap_action:
+              service_data:
+                room: kitchen
+      - type: horizontal-stack
+        cards:
+          - type: conditional
+            conditions:
+              - entity: vacuum.ozmo_950
+                state: docked
+              - entity: vacuum.ozmo_950
+                state_not: paused
+            card:
+              type: custom:button-card
+              template: vacuum_service
+              icon: mdi:play
+              name: Start
+              tap_action:
+                action: call-service
+                service: script.deebot_clean
+              variables:
+                enabled: |
+                  [[[ 
+                    return ((!states['input_text.deebot_ozmo_950_queue'].state || 
+                        states['input_text.deebot_ozmo_950_queue'].state.length === 0)
+                        && ['docked', 'idle', 'error', 'returning'].includes(entity.state))
+                  ]]]
+          - type: conditional
+            conditions:
+              - entity: vacuum.ozmo_950
+                state: cleaning
+            card:
+              type: custom:button-card
+              color: auto
+              icon: mdi:pause
+              name: Pause
+              tap_action:
+                action: call-service
+                service: vacuum.pause
+                service_data:
+                  entity_id: vacuum.ozmo_950
+              styles:
+                card:
+                  - height: 80px
+                  - background-color: var(-color)
+          - type: conditional
+            conditions:
+              - entity: vacuum.ozmo_950
+                state: paused
+            card:
+              type: custom:button-card
+              color: auto
+              icon: mdi:play-pause
+              name: Weiter
+              tap_action:
+                action: call-service
+                service: vacuum.start
+                service_data:
+                  entity_id: vacuum.ozmo_950
+              styles:
+                card:
+                  - height: 80px
+                  - background-color: var(-color)
+          - type: custom:button-card
+            template: vacuum_service
+            icon: mdi:stop
+            name: Stop
+            tap_action:
+              service: vacuum.stop
+            variables:
+              enabled: |
+                [[[ 
+                  return !(['cleaning', 'paused', 'returning'].includes(entity.state))
+                ]]]
+      - type: horizontal-stack
+        cards:
+          - type: custom:button-card
+            template: vacuum_service
+            icon: mdi:home-map-marker
+            name: Return to Base
+            tap_action:
+              service: vacuum.return_to_base
+            variables:
+              enabled: |
+                [[[ 
+                  return ['docked', 'returning'].includes(entity.state)
+                ]]]
+          - type: custom:button-card
+            color: auto
+            icon: mdi:map-marker
+            name: Locate
+            tap_action:
+              action: call-service
+              service: vacuum.locate
+              service_data:
+                entity_id: vacuum.ozmo_950
+            styles:
+              card:
+                - height: 80px
+                - background-color: var(-color)
+      - type: picture-entity
+        entity: camera.ozmo_950_live_map
+        tap_action:
+          action: none
+        hold_action:
+          action: none
+        show_state: false
+        show_name: false
+

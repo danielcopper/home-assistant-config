@@ -1,0 +1,450 @@
+binary_sensor.fritz_box_7590_wan_status:
+  hidden: true
+binary_sensor.fritz_box_7590_link:
+  hidden: true
+binary_sensor.livingroom_ceiling_1_update_available:
+  hidden: true
+binary_sensor.livingroom_ceiling_2_update_available:
+  hidden: true
+binary_sensor.livingroom_ceiling_3_update_available:
+  hidden: true
+binary_sensor.livingroom_ceiling_4_update_available:
+  hidden: true
+binary_sensor.livingroom_floorlamp_update_available:
+  hidden: true
+binary_sensor.livingroom_remote_update_available:
+  hidden: true
+binary_sensor.livingroom_poweroutlet_update_available:
+  hidden: true
+button.fritz_box_7590_firmware_update:
+  hidden: true
+button.fritz_box_7590_reboot:
+  hidden: true
+button.fritz_box_7590_reconnect:
+  hidden: true
+button.fritz_box_7590_cleanup:
+  hidden: true
+device_tracker.fritz_box:
+  hidden: true
+device_tracker.homeassistant:
+  hidden: true
+device_tracker.d57q97g3:
+  hidden: true
+device_tracker.c6_3358156_pc:
+  hidden: true
+device_tracker.pihole:
+  hidden: true
+device_tracker.pi_zero:
+  hidden: true
+device_tracker.samsung:
+  hidden: true
+device_tracker.tv_samsung_q7_series_65:
+  hidden: false
+  custom_card: true
+  excluded: false
+  disabled: false
+  friendly_name: ''
+  col_span: '2'
+  row_span: '1'
+  col_span_lg: '3'
+  row_span_lg: '1'
+  col_span_xl: '1'
+  row_span_xl: '1'
+  custom_popup: false
+  sort_order: 6
+light.livingroom_ceiling_1:
+  hidden: true
+light.livingroom_ceiling_2:
+  hidden: true
+light.livingroom_ceiling_3:
+  hidden: true
+light.livingroom_ceiling_4:
+  hidden: true
+binary_sensor.fritz_box_7590_connection:
+  sort_order: 1
+  hidden: true
+binary_sensor.fritz_box_7590_firmware_update:
+  sort_order: 2
+  hidden: true
+light.livingroom_lights:
+  sort_order: 1
+  custom_card: true
+  favorite: true
+light.livingroom_floorlamp:
+  sort_order: 3
+  custom_card: true
+light.livingroom_ceiling_lights:
+  sort_order: 2
+  custom_card: true
+media_player.samsung_tv:
+  sort_order: 4
+  hidden: true
+select.livingroom_poweroutlet_power_on_behavior:
+  sort_order: 7
+  hidden: true
+sensor.internetgatewaydevicev2_fritz_box_7590_b_received:
+  sort_order: 8
+  hidden: true
+sensor.internetgatewaydevicev2_fritz_box_7590_b_sent:
+  sort_order: 9
+  hidden: true
+sensor.internetgatewaydevicev2_fritz_box_7590_packets_received:
+  sort_order: 10
+  hidden: true
+sensor.internetgatewaydevicev2_fritz_box_7590_packets_sent:
+  sort_order: 11
+  hidden: true
+sensor.internetgatewaydevicev2_fritz_box_7590_kib_s_received:
+  sort_order: 12
+  hidden: true
+sensor.internetgatewaydevicev2_fritz_box_7590_kib_s_sent:
+  sort_order: 13
+  hidden: true
+sensor.internetgatewaydevicev2_fritz_box_7590_packets_s_received:
+  sort_order: 14
+  hidden: true
+sensor.internetgatewaydevicev2_fritz_box_7590_packets_s_sent:
+  sort_order: 15
+  hidden: true
+sensor.fritz_box_7590_b_received:
+  sort_order: 16
+  hidden: true
+sensor.fritz_box_7590_b_sent:
+  sort_order: 17
+  hidden: true
+sensor.fritz_box_7590_packets_received:
+  sort_order: 18
+  hidden: true
+sensor.fritz_box_7590_packets_sent:
+  sort_order: 19
+  hidden: true
+sensor.fritz_box_7590_external_ip:
+  sort_order: 20
+  hidden: true
+sensor.fritz_box_7590_wan_status:
+  sort_order: 21
+  hidden: true
+sensor.fritz_box_7590_kib_s_received:
+  sort_order: 22
+  hidden: true
+sensor.fritz_box_7590_kib_s_sent:
+  sort_order: 23
+  hidden: true
+sensor.fritz_box_7590_packets_s_received:
+  sort_order: 24
+  hidden: true
+sensor.fritz_box_7590_packets_s_sent:
+  sort_order: 25
+  hidden: true
+sensor.fritz_box_7590_external_ip_2:
+  sort_order: 26
+  hidden: true
+sensor.fritz_box_7590_device_uptime:
+  sort_order: 27
+  hidden: true
+sensor.fritz_box_7590_connection_uptime:
+  sort_order: 28
+  hidden: true
+sensor.fritz_box_7590_upload_throughput:
+  sort_order: 29
+  hidden: true
+sensor.fritz_box_7590_download_throughput:
+  sort_order: 30
+  hidden: true
+sensor.fritz_box_7590_max_connection_upload_throughput:
+  sort_order: 31
+  hidden: true
+sensor.fritz_box_7590_max_connection_download_throughput:
+  sort_order: 32
+  hidden: true
+sensor.fritz_box_7590_gb_sent:
+  sort_order: 33
+  hidden: true
+sensor.fritz_box_7590_gb_received:
+  sort_order: 34
+  hidden: true
+sensor.fritz_box_7590_link_upload_throughput:
+  sort_order: 35
+  hidden: true
+sensor.fritz_box_7590_link_download_throughput:
+  sort_order: 36
+  hidden: true
+sensor.fritz_box_7590_link_upload_noise_margin:
+  sort_order: 37
+  hidden: true
+sensor.fritz_box_7590_link_download_noise_margin:
+  sort_order: 38
+  hidden: true
+sensor.fritz_box_7590_link_upload_power_attenuation:
+  sort_order: 39
+  hidden: true
+sensor.fritz_box_7590_link_download_power_attenuation:
+  sort_order: 40
+  hidden: true
+sensor.livingroom_remote_battery:
+  sort_order: 41
+  hidden: true
+sensor.livingroom_remote_action:
+  sort_order: 42
+  hidden: true
+switch.fritz_box_7590_port_forward_home_assistant:
+  sort_order: 43
+  hidden: true
+switch.fritz_box_7590_wi_fi_fritz_box_7590_td:
+  sort_order: 44
+  hidden: true
+switch.fritz_box_7590_wi_fi_fritz_box_7590_td_5ghz:
+  sort_order: 45
+  hidden: true
+switch.fritz_box_7590_wi_fi_fritz_box_gastzugang:
+  sort_order: 46
+  hidden: true
+switch.tv_samsung_q7_series_65_internet_access:
+  sort_order: 47
+  hidden: true
+switch.fritz_box_internet_access:
+  sort_order: 48
+  hidden: true
+switch.homeassistant_internet_access:
+  sort_order: 49
+  hidden: true
+switch.d57q97g3_internet_access:
+  sort_order: 50
+  hidden: true
+switch.c6_3358156_pc_internet_access:
+  sort_order: 51
+  hidden: true
+switch.fritz_box_7590_wi_fi_fritz_box_7590_td_2_4ghz:
+  sort_order: 52
+  hidden: true
+switch.pihole_internet_access:
+  sort_order: 53
+  hidden: true
+switch.livingroom_poweroutlet:
+  sort_order: 5
+  custom_card: true
+  favorite: true
+switch.pi_zero_internet_access:
+  sort_order: 55
+  hidden: true
+switch.samsung_internet_access:
+  sort_order: 56
+  hidden: true
+update.home_assistant_supervisor_update:
+  sort_order: 57
+  hidden: true
+update.home_assistant_core_update:
+  sort_order: 58
+  hidden: true
+update.home_assistant_operating_system_update:
+  sort_order: 59
+  hidden: true
+update.fritz_box_7590_fritz_os:
+  sort_order: 60
+  hidden: true
+binary_sensor.kitchen_ceiling_update_available:
+  hidden: true
+binary_sensor.kitchen_remote_update_available:
+  hidden: true
+binary_sensor.kitchen_motionsensor_update_available:
+  hidden: true
+select.kitchen_cupboard_power_on_behavior:
+  hidden: true
+sensor.kitchen_motionsensor_battery:
+  hidden: true
+sensor.kitchen_remote_action:
+  hidden: true
+sensor.kitchen_remote_battery:
+  hidden: true
+binary_sensor.kitchen_motionsensor_illuminance_above_threshold:
+  hidden: true
+binary_sensor.kitchen_cupboard_update_available:
+  hidden: true
+binary_sensor.bedroom_switch_update_available:
+  hidden: true
+binary_sensor.bedroom_ceiling_update_available:
+  hidden: true
+sensor.bedroom_switch_battery:
+  hidden: true
+sensor.bedroom_switch_action:
+  hidden: true
+binary_sensor.ozmo_950_mop_attached:
+  hidden: true
+binary_sensor.office_ceiling_update_available:
+  hidden: true
+binary_sensor.office_spots_update_available:
+  hidden: true
+binary_sensor.office_remote_update_available:
+  hidden: true
+button.ozmo_950_life_span_brush_reset:
+  hidden: true
+button.ozmo_950_life_span_side_brush_reset:
+  hidden: true
+button.ozmo_950_life_span_filter_reset:
+  hidden: true
+button.848840d4_bafc_4c52_a9b1_f7968ca571fb_relocate:
+  hidden: true
+camera.ozmo_950_live_map:
+  hidden: true
+device_tracker.desktop_5eg56m6:
+  hidden: true
+device_tracker.desktop_ba37uop:
+  hidden: true
+device_tracker.desktop_cuupl9j:
+  hidden: true
+device_tracker.hp0332c5:
+  hidden: true
+device_tracker.laptop_3tnou81f:
+  hidden: true
+device_tracker.desktop_5eg56m6_2:
+  hidden: true
+number.ozmo_950_volume:
+  hidden: true
+select.ozmo_950_water_amount:
+  hidden: true
+select.office_spots_power_on_behavior:
+  hidden: true
+sensor.hp_envy_5540_series_black_ink:
+  hidden: true
+sensor.hp_envy_5540_series_tri_color_ink:
+  hidden: true
+sensor.hp_envy_5540_series:
+  hidden: true
+sensor.ozmo_950_last_cleaning:
+  hidden: true
+sensor.ozmo_950_stats_area:
+  hidden: true
+sensor.ozmo_950_stats_time:
+  hidden: true
+sensor.ozmo_950_stats_total_area:
+  hidden: true
+sensor.ozmo_950_stats_total_cleanings:
+  hidden: true
+sensor.ozmo_950_stats_total_time:
+  hidden: true
+sensor.ozmo_950_stats_type:
+  hidden: true
+sensor.ozmo_950_last_error:
+  hidden: true
+sensor.ozmo_950_life_span_brush:
+  hidden: true
+sensor.ozmo_950_life_span_filter:
+  hidden: true
+sensor.ozmo_950_life_span_side_brush:
+  hidden: true
+sensor.office_remote_battery:
+  hidden: true
+sensor.office_remote_action:
+  hidden: true
+switch.desktop_5eg56m6_internet_access:
+  hidden: true
+switch.desktop_ba37uop_internet_access:
+  hidden: true
+switch.desktop_cuupl9j_internet_access:
+  hidden: true
+switch.hp0332c5_internet_access:
+  hidden: true
+switch.laptop_3tnou81f_internet_access:
+  hidden: true
+switch.ozmo_950_advanced_mode:
+  hidden: true
+switch.ozmo_950_carpet_auto_fan_speed_boost:
+  hidden: true
+switch.ozmo_950_continuous_cleaning:
+  hidden: true
+switch.desktop_5eg56m6_internet_access_2:
+  hidden: true
+vacuum.ozmo_950:
+  hidden: false
+  custom_card: true
+  excluded: false
+  disabled: false
+  friendly_name: ''
+  col_span: '2'
+  row_span: '1'
+  col_span_lg: '3'
+  row_span_lg: '1'
+  col_span_xl: '2'
+  row_span_xl: '1'
+  custom_popup: false
+light.office_lights:
+  sort_order: 1
+  custom_card: true
+  favorite: true
+light.office_ceiling:
+  sort_order: 2
+  custom_card: true
+light.office_spots:
+  sort_order: 3
+  custom_card: true
+binary_sensor.hallway_switch_update_available:
+  hidden: true
+sensor.hallway_switch_battery:
+  hidden: true
+sensor.hallway_switch_action:
+  hidden: true
+binary_sensor.kitchen_poweroutlet_update_available:
+  hidden: true
+switch.kitchen_poweroutlet:
+  hidden: true
+  custom_card: true
+switch.kitchen_poweroutlet_power_outage_memory:
+  hidden: true
+sensor.kitchen_poweroutlet_device_temperature:
+  hidden: true
+light.kitchen_lights:
+  custom_card: true
+  sort_order: 1
+  favorite: true
+light.kitchen_cupboard:
+  custom_card: true
+  sort_order: 3
+light.kitchen_ceiling:
+  custom_card: true
+  sort_order: 2
+sensor.kitchen_poweroutlet_power:
+  sort_order: 5
+  hidden: true
+sensor.kitchen_poweroutlet_energy:
+  sort_order: 4
+  custom_card: true
+  hidden: true
+  excluded: false
+  disabled: false
+  friendly_name: ''
+  col_span: '2'
+  row_span: '1'
+  col_span_lg: '3'
+  row_span_lg: '1'
+  col_span_xl: '2'
+  row_span_xl: '1'
+  custom_popup: false
+binary_sensor.kitchen_motionsensor_occupancy:
+  sort_order: 6
+  custom_card: true
+light.bedroom_ceiling:
+  custom_card: true
+  favorite: true
+binary_sensor.office_poweroutlet_update_available:
+  hidden: true
+select.office_poweroutlet_power_on_behavior:
+  hidden: true
+switch.office_poweroutlet:
+  custom_card: true
+  favorite: true
+mc7:
+  sort_order: 1
+nvx:
+  sort_order: 4
+ikl:
+  sort_order: 2
+lz1:
+  sort_order: 3
+f37:
+  sort_order: 5
+sensor.speedtest_ping:
+  hidden: true
+sensor.speedtest_upload:
+  hidden: true
+sensor.speedtest_download:
+  hidden: true

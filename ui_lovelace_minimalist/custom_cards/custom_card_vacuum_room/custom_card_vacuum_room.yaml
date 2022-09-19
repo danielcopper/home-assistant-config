@@ -1,0 +1,52 @@
+---
+vacuum_room:
+    color: var(--text-color)
+    variables:
+      lock_enabled: >
+        [[[ return ['cleaning',
+        'paused'].includes(states['vacuum.ozmo_950'].state) ]]]
+    state:
+      - operator: template
+        value: |
+          [[[ return variables.lock_enabled && entity.state == 0 ]]]
+        styles:
+          card:
+            - color: var(--disabled-text-color)
+      - styles:
+          card:
+            - background-color: var(--primary-color)
+        operator: '>='
+        value: 1
+    styles:
+      card:
+        - font-size: 12px
+      grid:
+        - position: relative
+      custom_fields:
+        order:
+          - display: |
+              [[[
+                if (entity.state == "0")
+                  return "none";
+                return "block";
+              ]]]
+          - position: absolute
+          - left: 5%
+          - top: 5%
+          - height: 20px
+          - width: 20px
+          - font-size: 20px
+          - font-weight: bold
+          - line-height: 20px
+    custom_fields:
+      order: |
+        [[[ return entity.state ]]]
+    tap_action:
+      action: call-service
+      service: script.deebot_room_queue
+      service_data:
+        queue: input_text.deebot_ozmo_950_queue
+    lock:
+      enabled: |
+        [[[ return variables.lock_enabled ]]]
+      exemptions: []

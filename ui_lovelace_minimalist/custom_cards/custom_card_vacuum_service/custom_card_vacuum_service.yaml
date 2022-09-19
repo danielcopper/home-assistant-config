@@ -1,0 +1,24 @@
+---
+vacuum_service:
+  color: var(--text-color)
+  entity: vacuum.ozmo_950
+  tap_action:
+    action: call-service
+    service_data:
+      entity_id: vacuum.ozmo_950
+  lock:
+    enabled: |
+      [[[ return variables.enabled ]]]
+    exemptions: []
+  styles:
+    card:
+      - height: 80px
+    lock:
+      - color: var(--primary-text-color)
+  state:
+    - operator: template
+      value: |
+        [[[ return variables.enabled ]]]
+      styles:
+        card:
+          - color: var(--disabled-text-color)

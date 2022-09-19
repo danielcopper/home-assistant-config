@@ -1,0 +1,16 @@
+# Deebot Automation
+- alias: Staubsauger Zimmer resetieren
+  trigger:
+    - platform: event
+      event_type: deebot_cleaning_job
+      event_data:
+        status: finished
+  condition: []
+  action:
+    - alias: Reset room queue
+      service: input_text.set_value
+      target:
+        entity_id: input_text.deebot_ozmo_950_queue
+      data:
+        value: ""
+  mode: single

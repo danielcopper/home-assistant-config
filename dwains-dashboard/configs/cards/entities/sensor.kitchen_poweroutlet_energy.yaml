@@ -1,0 +1,10 @@
+experimental:
+  disable_config_validation: true
+graph_span: 1d
+header:
+  show: true
+series:
+- entity: sensor.kitchen_poweroutlet_power
+  name: Fridge Consumption
+  type: line
+type: custom:apexcharts-card

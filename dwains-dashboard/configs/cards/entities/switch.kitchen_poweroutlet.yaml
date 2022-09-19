@@ -1,0 +1,27 @@
+action_button:
+  icon: mdi:power
+  mode: custom
+  show: true
+  show_spinner: true
+  tap_action:
+    action: toggle
+compact: false
+entity: switch.kitchen_poweroutlet
+icon:
+  icon: ''
+  show: true
+  tap_action:
+    action: more-info
+  use_state_color: true
+name: Fridge
+show_name: true
+show_state: true
+slider:
+  background: solid
+  direction: left-right
+  force_square: false
+  show_track: false
+  toggle_on_click: true
+  use_percentage_bg_opacity: false
+  use_state_color: false
+type: custom:slider-button-card

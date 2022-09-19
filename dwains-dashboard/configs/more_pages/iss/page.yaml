@@ -1,0 +1,48 @@
+blueprint: iss_blueprint_fixed_sensor.yaml
+card:
+  cards:
+  - cards:
+    - entities:
+      - entity: sensor.international_space_station_peoples_in
+        name: $01_translate_number_of_peoples$
+      - entity: sensor.international_space_station_next_rise
+        name: $02_translate_next_rise$
+      - entity: sensor.international_space_station_longitude
+        name: $04_translate_longitude$
+      - entity: sensor.international_space_station_latitude
+        name: $05_translate_latitude$
+      header:
+        image: https://upload.wikimedia.org/wikipedia/commons/f/f2/Space_station_freedom_%281%29.jpg
+        type: picture
+      hold_action:
+        action: none
+      tap_action:
+        action: none
+      title: $06_translate_informations$
+      type: entities
+    - entities:
+      - entity: sensor.iss
+      hours_to_show: 24
+      title: ISS $03_translate_over_your_house$
+      type: history-graph
+    item_classes: col-xs-12 col-sm-5
+    type: custom:vertical-stack-in-card
+  - aspect_ratio: 92%
+    dark_mode: $07_disable_dark_mode$
+    default_zoom: 1.5
+    entities:
+    - entity: sensor.iss
+    hours_to_show: 2
+    item_classes: col-xs-12 col-sm-7
+    type: map
+  items_classes: col-xs-12
+  type: custom:dwains-flexbox-card
+data:
+  01_translate_number_of_peoples: Number of people on board
+  02_translate_next_rise: Next rise
+  03_translate_over_your_house: over our house
+  04_translate_longitude: Longitude
+  05_translate_latitude: Latitutde
+  06_translate_informations: Informations
+  07_disable_dark_mode: false
+type: custom:dwains-blueprint-card

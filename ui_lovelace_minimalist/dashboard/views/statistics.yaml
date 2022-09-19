@@ -1,0 +1,127 @@
+title: 'Statistics'
+path: 'statistics'
+cards:
+  - type: 'custom:button-card'
+    template: chip_back
+    variables:
+      ulm_chip_back_path: home
+
+  - type: 'custom:button-card'
+    template: card_title
+    name: Statistics
+
+  - type: vertical-stack
+    cards:    
+    - type: 'custom:button-card'
+      template: card_title
+      label: System
+    - type: 'custom:button-card'
+      template: card_graph
+      variables:
+        ulm_card_graph_color: "var(--google-red)"
+        ulm_card_graph_name: CPU Usage
+        ulm_card_graph_entity: sensor.processor_use
+        ulm_card_graph_type: fill
+        ulm_card_graph_hours: 48
+    - type: 'custom:button-card'
+      template: card_graph
+      variables:
+        ulm_card_graph_color: "var(--google-yellow)"
+        ulm_card_graph_name: CPU Temperature
+        ulm_card_graph_entity: sensor.processor_temperature
+        ulm_card_graph_type: fill
+        ulm_card_graph_hours: 48
+    - type: 'custom:button-card'
+      template: card_graph
+      variables:
+        ulm_card_graph_color: "var(--google-green)"
+        ulm_card_graph_name: Memory Usage
+        ulm_card_graph_entity: sensor.memory_use
+        ulm_card_graph_type: fill
+        ulm_card_graph_hours: 48
+    - type: 'custom:button-card'
+      template: card_graph
+      variables:
+        ulm_card_graph_color: "var(--google-blue)"
+        ulm_card_graph_name: Disk Usage
+        ulm_card_graph_entity: sensor.disk_use_percent_config
+        ulm_card_graph_type: fill
+        ulm_card_graph_hours: 48
+    
+
+
+        
+  - type: vertical-stack
+    cards:    
+    - type: 'custom:button-card'
+      template: card_title
+      label: Motion
+    - type: horizontal-stack
+      cards:
+        - type: 'custom:button-card'
+          template: card_binary_sensor_alert
+          variables:
+            - ulm_card_binary_sensor_alert: true
+          entity: binary_sensor.kitchen_motionsensor_occupancy
+          name: "Kitchen Motion"
+          show_last_changed: true
+        - type: 'custom:button-card'
+          template: card_battery
+          entity: sensor.kitchen_motionsensor_battery
+          variables:
+              ulm_card_battery_charger_type_entity_id: sensor.kitchen_motionsensor_battery
+              ulm_card_battery_battery_level_danger: 30
+              ulm_card_battery_battery_level_warning: 80
+          name: Kitchen Battery
+
+  - type: vertical-stack
+    cards:
+    - type: 'custom:button-card'
+      template: card_title
+      label: Remotes
+    - type: horizontal-stack
+      cards:
+        - type: 'custom:button-card'
+          template: card_battery
+          entity: sensor.livingroom_remote_battery
+          variables:
+              ulm_card_battery_charger_type_entity_id: sensor.livingroom_remote_battery
+              ulm_card_battery_battery_level_danger: 30
+              ulm_card_battery_battery_level_warning: 80
+          name: Living Room Remote
+        - type: 'custom:button-card'
+          template: card_battery
+          entity: sensor.office_remote_battery
+          variables:
+              ulm_card_battery_charger_type_entity_id: sensor.office_remote_battery
+              ulm_card_battery_battery_level_danger: 30
+              ulm_card_battery_battery_level_warning: 80
+          name: Office Remote
+    - type: horizontal-stack
+      cards:
+        - type: 'custom:button-card'
+          template: card_battery
+          entity: sensor.kitchen_remote_battery
+          variables:
+              ulm_card_battery_charger_type_entity_id: sensor.kitchen_remote_battery
+              ulm_card_battery_battery_level_danger: 30
+              ulm_card_battery_battery_level_warning: 80
+          name: Kitchen Remote
+        - type: 'custom:button-card'
+          template: card_battery
+          entity: sensor.bedroom_switch_battery
+          variables:
+              ulm_card_battery_charger_type_entity_id: sensor.bedroom_switch_battery
+              ulm_card_battery_battery_level_danger: 30
+              ulm_card_battery_battery_level_warning: 80
+          name: Bedroom Remote
+    - type: horizontal-stack
+      cards:
+        - type: 'custom:button-card'
+          template: card_battery
+          entity: sensor.hallway_switch_battery
+          variables:
+              ulm_card_battery_charger_type_entity_id: sensor.hallway_switch_battery
+              ulm_card_battery_battery_level_danger: 30
+              ulm_card_battery_battery_level_warning: 80
+          name: Hallway Remote

@@ -1,0 +1,111 @@
+default_config:
+
+
+########################################################
+##                      Includes                      ##
+########################################################
+group: !include groups.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml
+scene: !include scenes.yaml
+light: !include lights.yaml
+media_player: !include media_player.yaml
+sensor: !include sensor.yaml
+
+
+########################################################
+##                  Google Assistant                  ##
+########################################################
+http:
+  ssl_certificate: /ssl/fullchain.pem
+  ssl_key: /ssl/privkey.pem
+  ip_ban_enabled: true
+  login_attempts_threshold: 5
+
+google_assistant:
+  project_id: cd-home-assistant-344b6
+  service_account: !include SERVICE_ACCOUNT.json
+  report_state: true
+
+
+########################################################
+##                 User Interface                     ##
+########################################################
+frontend:
+  themes: !include_dir_merge_named themes
+
+
+########################################################
+##                 Deebot Ozmo 950                    ##
+########################################################
+recorder:
+  exclude:
+    entities:
+      - input_text.deebot_ozmo_950_queue
+      - script.deebot_room_queue
+    entity_globs:
+      - sensor.deebot_*_queue_*
+
+input_text:
+  deebot_ozmo_950_queue:
+    name: Deebot Room Order
+    max: 255 # Current max limit. See https://www.home-assistant.io/integrations/input_text/#max
+
+# TODO - Check for updated config that does not give an error
+# Room name comes from the integration to match attribute names
+template:
+  unique_id: deebot_ozmo_950_queue
+  trigger:
+    - platform: state
+      entity_id: input_text.deebot_ozmo_950_queue
+  sensor:
+    # Add for each room the following. Change room_name accordingly
+    - unique_id: deebot_ozmo_950_queue_living_room
+      name: deebot_ozmo_950_queue_living_room
+      # room_name must match the room name provided by the vacuum
+      state: >
+        {% set room_name = "living_room" %}
+        {% set queue = trigger.to_state.state.split(",") %}
+        {{ queue.index(room_name)+1 if room_name in queue else 0 }}
+    - unique_id: deebot_ozmo_950_queue_study
+      name: deebot_ozmo_950_queue_study
+      # room_name must match the room name provided by the vacuum
+      state: >
+        {% set room_name = "study" %}
+        {% set queue = trigger.to_state.state.split(",") %}
+        {{ queue.index(room_name)+1 if room_name in queue else 0 }}
+    - unique_id: deebot_ozmo_950_queue_bathroom
+      name: deebot_ozmo_950_queue_bathroom
+      # room_name must match the room name provided by the vacuum
+      state: >
+        {% set room_name = "bathroom" %}
+        {% set queue = trigger.to_state.state.split(",") %}
+        {{ queue.index(room_name)+1 if room_name in queue else 0 }}
+    - unique_id: deebot_ozmo_950_queue_bedroom
+      name: deebot_ozmo_950_queue_bedroom
+      # room_name must match the room name provided by the vacuum
+      state: >
+        {% set room_name = "bedroom" %}
+        {% set queue = trigger.to_state.state.split(",") %}
+        {{ queue.index(room_name)+1 if room_name in queue else 0 }}
+    - unique_id: deebot_ozmo_950_queue_corridor
+      name: deebot_ozmo_950_queue_corridor
+      # room_name must match the room name provided by the vacuum
+      state: >
+        {% set room_name = "corridor" %}
+        {% set queue = trigger.to_state.state.split(",") %}
+        {{ queue.index(room_name)+1 if room_name in queue else 0 }}
+    - unique_id: deebot_ozmo_950_queue_lounge
+      name: deebot_ozmo_950_queue_lounge
+      # room_name must match the room name provided by the vacuum
+      state: >
+        {% set room_name = "lounge" %}
+        {% set queue = trigger.to_state.state.split(",") %}
+        {{ queue.index(room_name)+1 if room_name in queue else 0 }}
+    - unique_id: deebot_ozmo_950_queue_kitchen
+      name: deebot_ozmo_950_queue_kitchen
+      # room_name must match the room name provided by the vacuum
+      state: >
+        {% set room_name = "kitchen" %}
+        {% set queue = trigger.to_state.state.split(",") %}
+        {{ queue.index(room_name)+1 if room_name in queue else 0 }}

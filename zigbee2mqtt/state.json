@@ -1,0 +1,205 @@
+{
+    "1": {
+        "state": "OFF",
+        "color_mode": "color_temp",
+        "brightness": 152,
+        "color_temp": 336
+    },
+    "2": {
+        "color_mode": "color_temp",
+        "state": "OFF",
+        "brightness": 152,
+        "color_temp": 336
+    },
+    "3": {
+        "state": "ON",
+        "brightness": 157
+    },
+    "4": {
+        "color_mode": "color_temp",
+        "state": "OFF",
+        "color_temp": 370,
+        "brightness": 149
+    },
+    "0x7cb03eaa0a04b7f7": {
+        "update": {
+            "state": "idle"
+        },
+        "update_available": false,
+        "state": "ON",
+        "brightness": 157,
+        "linkquality": 239
+    },
+    "0xf0d1b8000011acc3": {
+        "color_mode": "color_temp",
+        "update": {
+            "state": "idle"
+        },
+        "update_available": false,
+        "state": "OFF",
+        "brightness": 152,
+        "color_temp": 336,
+        "linkquality": 239
+    },
+    "0xf0d1b8000011b4ee": {
+        "color_mode": "color_temp",
+        "update": {
+            "state": "idle"
+        },
+        "update_available": false,
+        "state": "OFF",
+        "brightness": 152,
+        "color_temp": 336,
+        "linkquality": 199
+    },
+    "0xf0d1b8000011ac5b": {
+        "color_mode": "color_temp",
+        "update": {
+            "state": "idle"
+        },
+        "update_available": false,
+        "state": "OFF",
+        "brightness": 152,
+        "color_temp": 336,
+        "linkquality": 239
+    },
+    "0xf0d1b800001199b1": {
+        "color_mode": "color_temp",
+        "update": {
+            "state": "idle"
+        },
+        "update_available": false,
+        "state": "OFF",
+        "brightness": 152,
+        "color_temp": 336,
+        "linkquality": 239
+    },
+    "0xf0d1b8000019a7d9": {
+        "color_mode": "color_temp",
+        "update": {
+            "state": "idle"
+        },
+        "update_available": false,
+        "state": "OFF",
+        "brightness": 152,
+        "color_temp": 336,
+        "linkquality": 255
+    },
+    "0xf0d1b8000019a7ba": {
+        "color_mode": "color_temp",
+        "update": {
+            "state": "idle"
+        },
+        "update_available": false,
+        "state": "OFF",
+        "color_temp": 370,
+        "brightness": 149,
+        "linkquality": 255
+    },
+    "0x680ae2fffe4a00bc": {
+        "update": {
+            "state": "idle"
+        },
+        "update_available": false,
+        "state": "ON",
+        "brightness": 157,
+        "linkquality": 239
+    },
+    "0x000d6ffffe2d47fa": {
+        "update": {
+            "state": "idle"
+        },
+        "update_available": false,
+        "state": "OFF",
+        "brightness": 149,
+        "linkquality": 255
+    },
+    "0x04cd15fffe6fabdc": {
+        "battery": 100,
+        "update": {
+            "state": "idle"
+        },
+        "update_available": false,
+        "linkquality": 231
+    },
+    "0xd0cf5efffef155af": {
+        "battery": 60,
+        "update": {
+            "state": "idle"
+        },
+        "update_available": false
+    },
+    "0x04cd15fffe76efe2": {
+        "battery": 100,
+        "update": {
+            "state": "idle"
+        },
+        "update_available": false,
+        "linkquality": 255
+    },
+    "0x0c4314fffe1bdbe1": {
+        "battery": 87,
+        "update": {
+            "state": "idle"
+        },
+        "update_available": false,
+        "linkquality": 199
+    },
+    "0x0c4314fffe5bd949": {
+        "update": {
+            "state": "idle"
+        },
+        "update_available": false,
+        "battery": 87,
+        "linkquality": 255
+    },
+    "0x84ba20fffe7fd7f0": {
+        "battery": 60,
+        "occupancy": false,
+        "illuminance_above_threshold": false,
+        "update": {
+            "state": "idle"
+        },
+        "update_available": false,
+        "linkquality": 255
+    },
+    "0x804b50fffeb0a5fb": {
+        "state": "ON",
+        "linkquality": 255,
+        "update": {
+            "state": "idle"
+        },
+        "update_available": false
+    },
+    "0xf0d1b8000019a713": {
+        "color_mode": "xy",
+        "update": {
+            "state": "idle"
+        },
+        "update_available": false,
+        "state": "OFF",
+        "brightness": 167,
+        "linkquality": 42
+    },
+    "0x54ef44100050f408": {
+        "update": {
+            "state": "idle"
+        },
+        "update_available": false,
+        "state": "ON",
+        "power_outage_memory": true,
+        "power": 24,
+        "energy": 2.83,
+        "linkquality": 231,
+        "device_temperature": 28
+    },
+    "0xcc86ecfffe1eb67f": {
+        "update": {
+            "state": "idle"
+        },
+        "update_available": false,
+        "state": "ON",
+        "power_on_behavior": "on",
+        "linkquality": 191
+    }
+}

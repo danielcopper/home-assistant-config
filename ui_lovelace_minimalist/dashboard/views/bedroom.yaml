@@ -1,0 +1,24 @@
+title: "Bedroom"
+path: "bedroom"
+cards:
+  - type: "custom:button-card"
+    template: chip_back
+    variables:
+      ulm_chip_back_path: home
+
+  - type: "custom:button-card"
+    template: card_title
+    name: Bedroom
+
+  - type: vertical-stack
+    cards:
+      - type: "custom:button-card"
+        template: card_light
+        entity: light.bedroom_ceiling
+        variables:
+          ulm_card_light_name: Ceiling
+          ulm_card_light_enable_slider: true
+          ulm_card_light_enable_color: true
+          ulm_card_light_force_background_color: true
+          ulm_card_light_enable_collapse: true
+          ulm_card_light_enable_horizontal: true

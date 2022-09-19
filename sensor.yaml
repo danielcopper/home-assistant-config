@@ -1,0 +1,52 @@
+########################################################
+##                     Sensors                        ##
+########################################################
+
+- platform: systemmonitor
+  resources:
+    - type: disk_use_percent
+    - type: memory_use
+    - type: memory_use_percent
+    - type: processor_use
+    - type: processor_temperature
+    - type: last_boot
+    - type: ipv4_address
+      arg: eth0
+    - type: throughput_network_in
+      arg: eth0
+    - type: throughput_network_out
+      arg: eth0
+
+# https://github.com/delzear/hass-formulaoneapi
+- platform: formulaone_api
+
+# Sensors for IIS
+# Currently unavailable in HAs sensor implementation
+- platform: template
+  sensors:
+    international_space_station_peoples_in:
+      friendly_name: "Iss Peoples"
+      icon_template: mdi:account-group
+      value_template: "{{ state_attr('sensor.iss', 'number_of_people_in_space' ) }}"
+
+# Currently unavailable in HAs sensor implementation
+- platform: template
+  sensors:
+    international_space_station_next_rise:
+      friendly_name: "Iss next rise"
+      icon_template: mdi:waves-arrow-up
+      value_template: "{{ state_attr('sensor.iss', 'next_rise' ) }}"
+
+- platform: template
+  sensors:
+    international_space_station_longitude:
+      friendly_name: "Iss longitude"
+      icon_template: mdi:longitude
+      value_template: "{{ state_attr('sensor.iss', 'longitude' ) }}"
+
+- platform: template
+  sensors:
+    international_space_station_latitude:
+      friendly_name: "Iss latitude"
+      icon_template: mdi:latitude
+      value_template: "{{ state_attr('sensor.iss', 'latitude' ) }}"

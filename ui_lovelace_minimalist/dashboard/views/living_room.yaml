@@ -1,0 +1,302 @@
+title: "Living Room"
+path: "living_room"
+cards:
+  - type: "custom:button-card"
+    template: chip_back
+    variables:
+      ulm_chip_back_path: home
+
+  - type: "custom:button-card"
+    template: card_title
+    name: Livingroom
+
+# Media Control Section For Samsung TV
+  - type: vertical-stack
+    cards:
+# Mini Media Player
+      - type: grid
+        columns: 1
+        square: false
+        cards:
+          - type: conditional
+            conditions:
+              - entity: media_player.samsung_tv
+                state: "on"
+            card:
+              type: custom:mini-media-player
+              entity: media_player.samsung_tv
+              volume_stateless: true
+              group: false
+              artwork: cover
+              hide:
+                volume: true
+                power: true
+                info: false
+                source: true
+                icon: true
+                icon_state: true
+                next: true
+                prev: true
+                play_pause: true
+              source: full
+# TV App Selection
+      - type: grid
+        columns: 6
+        square: true
+        cards:
+          - type: picture
+            image: /local/logos/netflix.png
+            tap_action:
+              action: call-service
+              service: script.lounge_netflix
+              data: {}
+              target: {}
+            hold_action:
+              action: none
+          - type: picture
+            image: /local/logos/prime-video.jpg
+            tap_action:
+              action: call-service
+              service: script.lounge_prime_video
+              data: {}
+              target: {}
+            hold_action:
+              action: none
+          - type: picture
+            image: /local/logos/magenta.jpg
+            tap_action:
+              action: call-service
+              service: script.lounge_magenta_tv
+              data: {}
+              target: {}
+            hold_action:
+              action: none
+          - type: picture
+            image: /local/logos/sky.jpg
+            tap_action:
+              action: call-service
+              service: script.lounge_sky_q
+              data: {}
+              target: {}
+            hold_action:
+              action: none
+          - type: picture
+            image: /local/logos/spotify.jpg
+            tap_action:
+              action: call-service
+              service: script.lounge_spotify
+              data: {}
+              target: {}
+            hold_action:
+              action: none
+          - type: picture
+            tap_action:
+              action: call-service
+              service: script.lounge_disney_plus
+              data: {}
+              target: {}
+            hold_action:
+              action: none
+            image: /local/logos/disney.jpg
+# Control Buttons Section
+# Part 1
+# General Media Controls
+      - type: grid
+        square: false
+        columns: 3
+        cards:
+          - show_name: false
+            show_icon: true
+            type: button
+            tap_action:
+              action: toggle
+            entity: media_player.samsung_tv
+            show_state: false
+          - show_name: false
+            show_icon: true
+            type: button
+            tap_action:
+              action: toggle
+            entity: script.remote_arrow_up
+            icon: mdi:arrow-up
+          - show_name: false
+            show_icon: true
+            type: button
+            tap_action:
+              action: toggle
+            entity: light.livingroom_lights
+            icon: mdi:lightbulb-group
+          - show_name: false
+            show_icon: true
+            type: button
+            tap_action:
+              action: toggle
+            entity: script.remote_arrow_left
+            icon: mdi:arrow-left
+          - show_name: false
+            show_icon: true
+            type: button
+            tap_action:
+              action: toggle
+            entity: script.remote_select
+            icon: mdi:check-bold
+          - show_name: false
+            show_icon: true
+            type: button
+            tap_action:
+              action: toggle
+            entity: script.remote_arrow_right
+            icon: mdi:arrow-right
+          - show_name: false
+            show_icon: true
+            type: button
+            tap_action:
+              action: toggle
+            entity: script.remote_back
+            icon: mdi:arrow-u-left-top
+          - show_name: false
+            show_icon: true
+            type: button
+            tap_action:
+              action: toggle
+            entity: script.remote_arrow_down
+            icon: mdi:arrow-down
+          - show_name: false
+            show_icon: true
+            type: button
+            tap_action:
+              action: toggle
+            entity: script.remote_home
+            icon: mdi:home
+      - type: entities
+        entities:
+        - type: divider
+          style:
+            height: 1px
+            width: 80%
+            margin-left: auto
+            margin-right: auto
+            background: '#62717b'
+# Control Buttons Section
+# Part 2
+# Channels
+      - type: grid
+        square: false
+        columns: 3
+        cards:
+        - type: button
+          show_name: false
+          show_icon: true
+          tap_action:
+            action: toggle
+          entity: script.remote_channel_list
+          icon: mdi:format-list-bulleted-square
+        - show_name: false
+          show_icon: true
+          type: button
+          tap_action:
+            action: toggle
+          entity: script.remote_channel_down
+          icon: mdi:chevron-down
+        - show_name: false
+          show_icon: true
+          type: button
+          tap_action:
+            action: toggle
+          entity: script.remote_channel_up
+          icon: mdi:chevron-up
+# Volume Controls
+        - show_name: false
+          show_icon: true
+          type: button
+          tap_action:
+            action: toggle
+          entity: script.remote_mute
+          icon: mdi:volume-mute
+        - show_name: false
+          show_icon: true
+          type: button
+          tap_action:
+            action: toggle
+          entity: script.remote_volume_down
+          icon: mdi:volume-medium
+        - show_name: false
+          show_icon: true
+          type: button
+          tap_action:
+            action: toggle
+          entity: script.remote_volumne_up
+          icon: mdi:volume-high
+# RR and FF Controls
+      - type: grid
+        columns: 4
+        cards:
+        - type: button
+          show_name: false
+          show_icon: true
+          tap_action:
+            action: toggle
+          entity: script.remote_rewind
+          icon: mdi:skip-backward
+        - show_name: false
+          show_icon: true
+          type: button
+          tap_action:
+            action: toggle
+          entity: script.remote_pause
+          icon: mdi:pause
+        - show_name: false
+          show_icon: true
+          type: button
+          tap_action:
+            action: toggle
+          entity: script.remote_play
+          icon: mdi:play
+        - show_name: false
+          show_icon: true
+          type: button
+          tap_action:
+            action: toggle
+          entity: script.remote_fast_forward
+          icon: mdi:skip-forward
+# Input Device Section
+      - type: entities
+        show_header_toggle: true
+        state_color: false
+        entities:
+          - entity: input_select.media_cabinet
+      
+
+# Lights Section
+  - type: vertical-stack
+    cards:
+      - type: "custom:button-card"
+        template: card_light
+        entity: light.livingroom_lights
+        variables:
+          ulm_card_light_name: Lights
+          ulm_card_light_enable_slider: true
+          ulm_card_light_enable_color: true
+          ulm_card_light_force_background_color: true
+          ulm_card_light_enable_collapse: true
+          ulm_card_light_enable_horizontal: true
+      - type: "custom:button-card"
+        template: card_light
+        entity: light.livingroom_ceiling_lights
+        variables:
+          ulm_card_light_name: Ceiling
+          ulm_card_light_enable_slider: true
+          ulm_card_light_enable_color: true
+          ulm_card_light_force_background_color: true
+          ulm_card_light_enable_collapse: true
+          ulm_card_light_enable_horizontal: true
+      - type: "custom:button-card"
+        template: card_light
+        entity: light.livingroom_floorlamp
+        variables:
+          ulm_card_light_name: Floorlamp
+          ulm_card_light_enable_slider: true
+          ulm_card_light_enable_color: true
+          ulm_card_light_force_background_color: true
+          ulm_card_light_enable_collapse: true
+          ulm_card_light_enable_horizontal: true

@@ -1,0 +1,9 @@
+entity: binary_sensor.kitchen_motionsensor_occupancy
+icon: "{% if is_state('binary_sensor.kitchen_motionsensor_occupancy','off') %}\n \
+  \ mdi:motion-sensor-off\n{% else %}\n  mdi:motion-sensor\n{% endif %}"
+icon_color: "{% if is_state('binary_sensor.kitchen_motionsensor_occupancy','off')\
+  \ %}\n  grey\n{% else %}\n  light-green\n{% endif %}"
+primary: Motion Kitchen
+secondary: 'Triggered: {{ as_timestamp(states.binary_sensor.kitchen_motionsensor_occupancy.last_changed)
+  | timestamp_custom('' %H:%M'',true | int) }}'
+type: custom:mushroom-template-card

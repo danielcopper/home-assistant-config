@@ -1,0 +1,233 @@
+cards:
+- cards:
+  - card:
+      artwork: cover
+      entity: media_player.samsung_tv
+      group: false
+      hide:
+        icon: true
+        icon_state: true
+        info: false
+        next: true
+        play_pause: true
+        power: true
+        prev: true
+        source: true
+        volume: false
+      source: full
+      type: custom:mini-media-player
+      volume_stateless: true
+    conditions:
+    - entity: media_player.samsung_tv
+      state: 'on'
+    type: conditional
+  columns: 1
+  square: false
+  type: grid
+- cards:
+  - hold_action:
+      action: none
+    image: /local/logos/netflix.png
+    tap_action:
+      action: call-service
+      data: {}
+      service: script.lounge_netflix
+      target: {}
+    type: picture
+  - hold_action:
+      action: none
+    image: /local/logos/prime-video.jpg
+    tap_action:
+      action: call-service
+      data: {}
+      service: script.lounge_prime_video
+      target: {}
+    type: picture
+  - hold_action:
+      action: none
+    image: /local/logos/magenta.jpg
+    tap_action:
+      action: call-service
+      data: {}
+      service: script.lounge_magenta_tv
+      target: {}
+    type: picture
+  - hold_action:
+      action: none
+    image: /local/logos/sky.jpg
+    tap_action:
+      action: call-service
+      data: {}
+      service: script.lounge_sky_q
+      target: {}
+    type: picture
+  - hold_action:
+      action: none
+    image: /local/logos/spotify.jpg
+    tap_action:
+      action: call-service
+      data: {}
+      service: script.lounge_spotify
+      target: {}
+    type: picture
+  - hold_action:
+      action: none
+    image: /local/logos/disney.jpg
+    tap_action:
+      action: call-service
+      data: {}
+      service: script.lounge_disney_plus
+      target: {}
+    type: picture
+  columns: 6
+  square: true
+  type: grid
+- cards:
+  - entity: media_player.samsung_tv
+    show_icon: true
+    show_name: false
+    show_state: false
+    tap_action:
+      action: toggle
+    type: button
+  - entity: script.remote_arrow_up
+    icon: mdi:arrow-up
+    show_icon: true
+    show_name: false
+    tap_action:
+      action: toggle
+    type: button
+  - entity: light.livingroom_lights
+    icon: mdi:lightbulb-group
+    show_icon: true
+    show_name: false
+    tap_action:
+      action: toggle
+    type: button
+  - entity: script.remote_arrow_left
+    icon: mdi:arrow-left
+    show_icon: true
+    show_name: false
+    tap_action:
+      action: toggle
+    type: button
+  - entity: script.remote_select
+    icon: mdi:check-bold
+    show_icon: true
+    show_name: false
+    tap_action:
+      action: toggle
+    type: button
+  - entity: script.remote_arrow_right
+    icon: mdi:arrow-right
+    show_icon: true
+    show_name: false
+    tap_action:
+      action: toggle
+    type: button
+  - entity: script.remote_back
+    icon: mdi:arrow-u-left-top
+    show_icon: true
+    show_name: false
+    tap_action:
+      action: toggle
+    type: button
+  - entity: script.remote_arrow_down
+    icon: mdi:arrow-down
+    show_icon: true
+    show_name: false
+    tap_action:
+      action: toggle
+    type: button
+  - entity: script.remote_home
+    icon: mdi:home
+    show_icon: true
+    show_name: false
+    tap_action:
+      action: toggle
+    type: button
+  - entity: script.remote_channel_list
+    icon: mdi:format-list-bulleted-square
+    show_icon: true
+    show_name: false
+    tap_action:
+      action: toggle
+    type: button
+  - entity: script.remote_channel_down
+    icon: mdi:chevron-down
+    show_icon: true
+    show_name: false
+    tap_action:
+      action: toggle
+    type: button
+  - entity: script.remote_channel_up
+    icon: mdi:chevron-up
+    show_icon: true
+    show_name: false
+    tap_action:
+      action: toggle
+    type: button
+  - entity: script.remote_mute
+    icon: mdi:volume-mute
+    show_icon: true
+    show_name: false
+    tap_action:
+      action: toggle
+    type: button
+  - entity: script.remote_volume_down
+    icon: mdi:volume-medium
+    show_icon: true
+    show_name: false
+    tap_action:
+      action: toggle
+    type: button
+  - entity: script.remote_volumne_up
+    icon: mdi:volume-high
+    show_icon: true
+    show_name: false
+    tap_action:
+      action: toggle
+    type: button
+  columns: 3
+  square: false
+  type: grid
+- cards:
+  - entity: script.remote_rewind
+    icon: mdi:skip-backward
+    show_icon: true
+    show_name: false
+    tap_action:
+      action: toggle
+    type: button
+  - entity: script.remote_pause
+    icon: mdi:pause
+    show_icon: true
+    show_name: false
+    tap_action:
+      action: toggle
+    type: button
+  - entity: script.remote_play
+    icon: mdi:play
+    show_icon: true
+    show_name: false
+    tap_action:
+      action: toggle
+    type: button
+  - entity: script.remote_fast_forward
+    icon: mdi:skip-forward
+    show_icon: true
+    show_name: false
+    tap_action:
+      action: toggle
+    type: button
+  columns: 4
+  square: false
+  type: grid
+- entities:
+  - entity: input_select.media_cabinet
+  show_header_toggle: true
+  state_color: false
+  type: entities
+columns: 1
+square: false
+type: grid

@@ -1,0 +1,192 @@
+cards:
+- compact_view: true
+  entity: vacuum.ozmo_950
+  show_name: true
+  show_status: true
+  show_toolbar: true
+  stats:
+    cleaning:
+    - entity_id: sensor.ozmo_950_stats_area
+      subtitle: Cleaned Area
+      unit: "m\xB2"
+    - entity_id: sensor.ozmo_950_stats_time
+      subtitle: Cleaning Time
+      unit: Minutes
+    default:
+    - entity_id: sensor.ozmo_950_life_span_brush
+      subtitle: Main Brush
+      unit: '%'
+    - entity_id: sensor.ozmo_950_life_span_side_brush
+      subtitle: Side Brush
+      unit: '%'
+    - entity_id: sensor.ozmo_950_life_span_filter
+      subtitle: Filter
+      unit: '%'
+  type: custom:vacuum-card
+- color: auto-no-temperature
+  name: Choose Rooms to Clean
+  styles:
+    card:
+    - font-size: 18px
+    - height: 30px
+    name:
+    - color: var(--primary-color)
+  type: custom:button-card
+- cards:
+  - entity: sensor.deebot_ozmo_950_queue_study
+    icon: mdi:office-building
+    name: Office
+    tap_action:
+      service_data:
+        room: study
+    template: vacuum_room
+    type: custom:button-card
+  - entity: sensor.deebot_ozmo_950_queue_living_room
+    icon: mdi:sofa
+    name: Living Room
+    tap_action:
+      service_data:
+        room: living_room
+    template: vacuum_room
+    type: custom:button-card
+  - entity: sensor.deebot_ozmo_950_queue_bathroom
+    icon: mdi:shower
+    name: Bathroom
+    tap_action:
+      service_data:
+        room: bathroom
+    template: vacuum_room
+    type: custom:button-card
+  type: horizontal-stack
+- cards:
+  - entity: sensor.deebot_ozmo_950_queue_bedroom
+    icon: mdi:bed
+    name: Bedroom
+    tap_action:
+      service_data:
+        room: bedroom
+    template: vacuum_room
+    type: custom:button-card
+  - entity: sensor.deebot_ozmo_950_queue_corridor
+    icon: mdi:door-closed
+    name: Hallway
+    tap_action:
+      service_data:
+        room: corridor
+    template: vacuum_room
+    type: custom:button-card
+  - entity: sensor.deebot_ozmo_950_queue_lounge
+    icon: mdi:toilet
+    name: Toilet
+    tap_action:
+      service_data:
+        room: lounge
+    template: vacuum_room
+    type: custom:button-card
+  - entity: sensor.deebot_ozmo_950_queue_kitchen
+    icon: mdi:chef-hat
+    name: Kitchen
+    tap_action:
+      service_data:
+        room: kitchen
+    template: vacuum_room
+    type: custom:button-card
+  type: horizontal-stack
+- cards:
+  - card:
+      icon: mdi:play
+      name: Start
+      tap_action:
+        action: call-service
+        service: script.deebot_clean
+      template: vacuum_service
+      type: custom:button-card
+      variables:
+        enabled: "[[[ \n  return ((!states['input_text.deebot_ozmo_950_queue'].state\
+          \ || \n      states['input_text.deebot_ozmo_950_queue'].state.length ===\
+          \ 0)\n      && ['docked', 'idle', 'error', 'returning'].includes(entity.state))\n\
+          ]]]\n"
+    conditions:
+    - entity: vacuum.ozmo_950
+      state: docked
+    - entity: vacuum.ozmo_950
+      state_not: paused
+    type: conditional
+  - card:
+      color: auto
+      icon: mdi:pause
+      name: Pause
+      styles:
+        card:
+        - height: 80px
+        - background-color: var(-color)
+      tap_action:
+        action: call-service
+        service: vacuum.pause
+        service_data:
+          entity_id: vacuum.ozmo_950
+      type: custom:button-card
+    conditions:
+    - entity: vacuum.ozmo_950
+      state: cleaning
+    type: conditional
+  - card:
+      color: auto
+      icon: mdi:play-pause
+      name: Weiter
+      styles:
+        card:
+        - height: 80px
+        - background-color: var(-color)
+      tap_action:
+        action: call-service
+        service: vacuum.start
+        service_data:
+          entity_id: vacuum.ozmo_950
+      type: custom:button-card
+    conditions:
+    - entity: vacuum.ozmo_950
+      state: paused
+    type: conditional
+  - icon: mdi:stop
+    name: Stop
+    tap_action:
+      service: vacuum.stop
+    template: vacuum_service
+    type: custom:button-card
+    variables:
+      enabled: "[[[ \n  return !(['cleaning', 'paused', 'returning'].includes(entity.state))\n\
+        ]]]\n"
+  type: horizontal-stack
+- cards:
+  - icon: mdi:home-map-marker
+    name: Return to Base
+    tap_action:
+      service: vacuum.return_to_base
+    template: vacuum_service
+    type: custom:button-card
+    variables:
+      enabled: "[[[ \n  return ['docked', 'returning'].includes(entity.state)\n]]]\n"
+  - color: auto
+    icon: mdi:map-marker
+    name: Locate
+    styles:
+      card:
+      - height: 80px
+      - background-color: var(-color)
+    tap_action:
+      action: call-service
+      service: vacuum.locate
+      service_data:
+        entity_id: vacuum.ozmo_950
+    type: custom:button-card
+  type: horizontal-stack
+- entity: camera.ozmo_950_live_map
+  hold_action:
+    action: none
+  show_name: false
+  show_state: false
+  tap_action:
+    action: none
+  type: picture-entity
+type: vertical-stack

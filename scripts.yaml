@@ -1,0 +1,303 @@
+#################################################################
+##                   DEEBOT OZMO SCRIPTS                       ##
+#################################################################
+deebot_clean:
+  description: Start a deebot cleaning task
+  variables:
+    queue: input_text.deebot_ozmo_950_queue
+    vacuum_bot: vacuum.ozmo_950
+  sequence:
+    - alias: Get room numbers
+      variables:
+        # See for appending to list
+        # https://github.com/home-assistant/core/issues/33678#issuecomment-609424851
+        rooms: >-
+          {%- set queue_split = states(queue).split(",") -%}
+          {%- set rooms = state_attr(vacuum_bot, "rooms")-%}
+          {%- set data = namespace(rooms=[]) -%}
+          {%- for room_name in queue_split -%}
+            {%- set data.rooms = data.rooms + [rooms[room_name]] -%}
+          {%- endfor -%}
+          {{ data.rooms | join(",") }}
+    - alias: Send cleaning job to vacuum
+      service: vacuum.send_command
+      data:
+        entity_id: "{{ vacuum_bot }}"
+        command: spot_area
+        params:
+          rooms: "{{ rooms }}"
+          cleanings: 1
+
+deebot_room_queue:
+  description: Add/Remove a room from the queue
+  fields:
+    queue:
+      description: The queue variable
+      example: input_text.deebot_ozmo_950_queue
+    room:
+      description: Room, which should be removed or added
+      example: kitchen
+  sequence:
+    - service: input_text.set_value
+      target:
+        entity_id: "{{ queue }}"
+      data:
+        value: >-
+          {%- set queue_state = states(queue) -%}
+          {%- set queue_split = queue_state.split(",") -%}
+          {%- if queue_state | length == 0 -%}
+            {{ room }}
+          {%- elif room in queue_split -%}
+            {{ queue_split | reject("eq", room) | list | join(",")}}
+          {%- else -%}
+            {{ (queue_split + [room]) | join(",") }}
+          {%- endif -%}
+
+
+################################################################
+##                 SAMSUNG TV SCRIPTS                         ##
+################################################################
+remote_command:
+  alias: Remote Command
+  fields:
+    command:
+      description: The Command to send to the remote
+      example: up
+  sequence:
+    - choose:
+        - conditions:
+            - condition: state
+              entity_id: input_select.media_cabinet
+              state: TV
+          sequence:
+            - service: media_player.play_media
+              data:
+                entity_id: media_player.samsung_tv
+                media_content_type: "send_key"
+                media_content_id: "{{ command }}"
+      default: []
+  mode: single
+
+# TODO - add ability for long button press
+
+# Remote Button Actions
+remote_arrow_up:
+  alias: Remote Arrow Up
+  sequence:
+    - service: script.remote_command
+      data:
+        command: KEY_UP
+  mode: single
+
+remote_arrow_down:
+  alias: Remote Arrow Down
+  sequence:
+    - service: script.remote_command
+      data:
+        command: KEY_DOWN
+  mode: single
+
+remote_arrow_right:
+  alias: Remote Arrow Right
+  sequence:
+    - service: script.remote_command
+      data:
+        command: KEY_RIGHT
+  mode: single
+
+remote_arrow_left:
+  alias: Remote Arrow Left
+  sequence:
+    - service: script.remote_command
+      data:
+        command: KEY_LEFT
+  mode: single
+
+remote_top_menu:
+  alias: Remote Top Menu
+  sequence:
+    - service: script.remote_command
+      data:
+        command: KEY_TOPMENU
+  mode: single
+
+remote_home:
+  alias: Remote Home
+  sequence:
+    - service: script.remote_command
+      data:
+        command: KEY_HOME
+  mode: single
+
+remote_select:
+  alias: Remote select
+  sequence:
+    - service: script.remote_command
+      data:
+        command: KEY_ENTER
+  mode: single
+
+remote_wakeup:
+  alias: Remote wakeup
+  sequence:
+    - service: script.remote_command
+      data:
+        command: KEY_POWER
+  mode: single
+
+remote_menu:
+  alias: Remote menu
+  sequence:
+    - service: script.remote_command
+      data:
+        command: KEY_MENU
+  mode: single
+
+remote_back:
+  alias: Remote Back
+  sequence:
+    - service: script.remote_command
+      data:
+        command: KEY_RETURN
+  mode: single
+
+remote_rewind:
+  alias: Remote Rewind
+  sequence:
+    - service: script.remote_command
+      data:
+        command: KEY_REWIND_
+  mode: single
+
+remote_play:
+  alias: Remote Play
+  sequence:
+    - service: script.remote_command
+      data:
+        command: KEY_PLAY
+  mode: single
+
+remote_pause:
+  alias: Remote Pause
+  sequence:
+    - service: script.remote_command
+      data:
+        command: KEY_PAUSE
+  mode: single
+
+remote_fast_forward:
+  alias: Remote Fast Forward
+  sequence:
+    - service: script.remote_command
+      data:
+        command: KEY_FF_
+  mode: single
+
+remote_channel_up:
+  alias: Remote Channel Up
+  sequence:
+    - service: script.remote_command
+      data:
+        command: KEY_CHUP
+  mode: single
+
+remote_channel_down:
+  alias: Remote Channel Down
+  sequence:
+    - service: script.remote_command
+      data:
+        command: KEY_CHDOWN
+  mode: single
+
+remote_channel_list:
+  alias: Remote Channel List
+  sequence:
+    - service: script.remote_command
+      data:
+        command: KEY_CH_LIST
+  mode: single
+
+remote_volumne_up:
+  alias: Remote Volume Up
+  sequence:
+    - service: script.remote_command
+      data:
+        command: KEY_VOLUP
+  mode: single
+
+remote_volume_down:
+  alias: Remote Volume Down
+  sequence:
+    - service: script.remote_command
+      data:
+        command: KEY_VOLDOWN
+  mode: single
+
+remote_mute:
+  alias: Remote Mute
+  sequence:
+    - service: script.remote_command
+      data:
+        command: KEY_MUTE
+  mode: single
+
+# Launch Apps Commands
+lounge_netflix:
+  alias: Launch Netflix
+  sequence:
+    service: media_player.play_media
+    data:
+      media_content_id: 11101200001
+      media_content_type: app
+    target:
+      entity_id: media_player.samsung_tv
+
+lounge_prime_video:
+  alias: Launch Amazon Prime Video
+  sequence:
+    service: media_player.play_media
+    data:
+      media_content_id: 3201512006785
+      media_content_type: app
+    target:
+      entity_id: media_player.samsung_tv
+
+lounge_magenta_tv:
+  alias: Launch Magenta TV
+  sequence:
+    service: media_player.play_media
+    data:
+      media_content_id: g0nt8dscFO.MagentaTV
+      media_content_type: app
+    target:
+      entity_id: media_player.samsung_tv
+
+lounge_sky_q:
+  alias: Launch Sky Q
+  sequence:
+    service: media_player.play_media
+    data:
+      media_content_id: uM63Wq7UPQ.SkyQ
+      media_content_type: app
+    target:
+      entity_id: media_player.samsung_tv
+
+lounge_spotify:
+  alias: Launch Spotify
+  sequence:
+    service: media_player.play_media
+    data:
+      media_content_id: 3201606009684
+      media_content_type: app
+    target:
+      entity_id: media_player.samsung_tv
+
+lounge_disney_plus:
+  alias: Launch Disney Plus
+  sequence:
+    service: media_player.play_media
+    data:
+      media_content_id: MCmYXNxgcu.DisneyPlus
+      media_content_type: app
+    target:
+      entity_id: media_player.samsung_tv

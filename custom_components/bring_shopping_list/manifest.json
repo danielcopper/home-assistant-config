@@ -1,0 +1,12 @@
+{
+  "domain": "bring_shopping_list",
+  "name": "Bring Shopping List",
+  "documentation": "https://github.com/dotKrad/hass_bring_shopping_list_component",
+  "dependencies": [],
+  "codeowners": [
+      "@krad"
+  ],
+  "requirements": [],
+  "homeassistant": "0.96.0",
+  "version": "1.0.0"
+}
